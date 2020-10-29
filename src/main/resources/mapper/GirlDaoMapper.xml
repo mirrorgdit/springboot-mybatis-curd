@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.demo.dao.GirlDao">
+
+    <!--根据用户id查询用户信息-->
+    <select id="queryUserInfo" resultType="com.example.demo.entity.GirlEntity">
+        SELECT * FROM girl  WHERE 1 = 1 AND user_id = #{userId}
+    </select>
+
+    <!--查询所有用户信息-->
+    <select id="queryAllUserInfo" resultType="com.example.demo.entity.GirlEntity">
+        SELECT * FROM girl  WHERE 1 = 1
+    </select>
+
+    <!--查询所有用户信息-->
+    <insert id="addGirl" parameterType="com.example.demo.entity.GirlEntity">
+        insert into girl (username,password,salt,email,mobile,status) values (#{username},#{password},#{salt},#{email},#{mobile},#{status});
+    </insert>
+
+    <!--删除用户-->
+    <delete id="delGirl" parameterType="com.example.demo.entity.GirlEntity">
+        delete from girl where user_id = #{userId}
+    </delete>
+
+    <!--修改用户-->
+    <update id="updateGirl" parameterType="com.example.demo.entity.GirlEntity">
+        update girl set username = #{username}, mobile = #{mobile} where user_id = #{userId}
+    </update>
+</mapper>
